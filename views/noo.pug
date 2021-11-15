@@ -1,0 +1,207 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    style.
+      *{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+      box-sizing: border-box;
+      }
+      body{
+      font-family: 'Ephesis', cursive;
+      text-decoration: none;
+      }
+      nav{
+      background: #3782c4;
+      height: 80px;
+      width: 100%;
+      font: 30px;
+      }
+      label.logo{
+      color: aliceblue;
+      font-size: 35px;
+      line-height: 0 80px;
+      padding: 0 100px;font-weight: bold;
+      }
+      nav ul{
+      float: right;
+      margin-right: 20px;
+      }
+      nav ul li{
+      display: inline-block;
+      line-height: 80px;
+      margin: 0 5px;
+      }
+      nav ul li a{
+      color: aliceblue;
+      font-size: 17px;
+      text-transform: uppercase;
+      }
+      .active{
+      border: 1px solid silver;
+      padding: 3px;
+      margin:10px;
+      text-decoration: none;
+      border-radius: 3px;
+      }
+      .active:hover{
+      background-color: beige;
+      color: #000;
+      transition: .7s;
+      cursor: pointer;
+      }
+      .aadi{
+      padding: 20px;
+      background-color: #d5f4e6;
+      }
+      .aadi h2{
+      font-size: 03em ;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      }
+      .aadi p{
+      font-size: 17px;
+      }
+      .container2{
+      border: 2px solid black;
+      margin: 10x;
+      height: 70px;
+      justify-content: center;
+      }
+      .container{
+      background-color: #d5f4e6 ;
+      width: 1000px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-left: 150px;
+      margin-right: 150px;
+      }
+      .box{
+      position: relative ;
+      width: 300px;
+      height: 400px;
+      background: #000000;
+      box-shadow: 0 30px 40px rgba(0,0,0,0.5);
+      }
+      .box .imgA{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      }
+      .box .imgA img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: 0.5s;
+      }
+      .box:hover .imgA img{
+      opacity: 0;
+      }
+      .box .content{
+      position: absolute;
+      bottom: 20px;
+      left: 10%;
+      width: 80%;
+      height: 60px;
+      background-color: rgb(0, 0, 0);
+      transition: 0.5s;
+      overflow: hidden;
+      padding: 15px;
+      box-sizing: border-box;
+      color: aliceblue;
+      }
+      .box:hover .content{
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      left: 0;
+      }
+      .box .content h3{
+      margin: 10px;
+      padding: 0;
+      font-size: 20px;
+      }
+      .box .content p{
+      margin: 10px 0 0;
+      padding: 0;
+      opacity: 0;
+      line-height: 1.2em;
+      font-size: 20px;
+      transition: 0.5s;
+      text-align: justify;
+      }
+      .box:hover .content p{
+      opacity: 1;
+      transition-delay: 0.5s;
+      }
+      .b{
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      font-size: 20px;
+      text-decoration: none;
+      }
+      .b:hover{
+      color: antiquewhite;
+      text-decoration: none;
+      }
+      .shyam{
+      background-color: #d5f4e6;
+      }
+  body
+    nav
+      label.logo HERITAGE
+      ul
+        
+        li
+          a.active(href='feedback_form') FEEDBACK
+        li
+          a.active(href='about') ABOUT US
+    section
+      .shyam
+        .aadi
+          h2
+            | WELCOME TO 
+            br
+            |  HERITAGE
+          p
+            | Welcome to your go to website about the essential nutrients. Also Learn about how risk are you at getting aneamia. Know about all  nutrients for a good diet and the prevention and diagnosis of aneamia. While you are at it attempt a quiz and know how well you know your nutrients and about aneamia.
+        .container
+          .box
+            #img1.imgA
+              img(src='../static/AAA.jpg' alt='NOT FOUND')
+              .content
+                h3 NUTRITION
+                p
+                  | Your Guide to Nutrition, What You Need, and the Science of Why
+                .b
+                  a(href='nutrition') READ MORE
+          .box
+            .imgA
+              img(src='../static/BBB.jpg' alt='NOT FOUND')
+              .content
+                h3 ANAEMIA
+                p
+                  | What is anaemia? Why does anaemia happen? How can we prevent anaemia? All your questions about anaemaia  are answered here
+                .b
+                  a(href='anaemia') READ MORE
+          .box
+            .imgA
+              img(src='../static/CCC.jpg' alt='NOT FOUND')
+              .content
+                h3 QUIZ
+                p
+                  | How well do you know your body? What are it nutritional requirements. How prevalent is anaemia among women? Learn some interesting facts about nutrition and anaemia  by answering this short quiz. 
+                a(href='quiz') TAKE A QUIZ

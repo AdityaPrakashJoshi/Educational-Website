@@ -1,0 +1,232 @@
+
+html(lang='en')
+  head
+  body
+    | <
+    meta(charset='UTF-8')
+    meta(http-equiv='X-UA-Compatible' content='IE=edge')
+    meta(name='viewport' content='width=device-width, initial-scale=1.0')
+    title Document
+    style.
+      body {
+      font-size: 20px;
+      font-family: sans-serif;
+      color: #333;
+      }
+      .question {
+      font-weight: 600;
+      }
+      .answers {
+      margin-bottom: 20px;
+      }
+      #submit {
+      font-family: sans-serif;
+      font-size: 20px;
+      background-color: #297;
+      color: #fff;
+      border: 0px;
+      border-radius: 3px;
+      padding: 20px;
+      cursor: pointer;
+      margin-bottom: 20px;
+      }
+      #submit:hover {
+      background-color: #3a8;
+      }
+    #quiz
+    button#submit Get Results
+    #results
+    script.
+      var myQuestions = [{
+      question: "1.  This food group is our body's best source of energy?",
+      answers: {
+      a: ' Meat Group',
+      b: 'fats,oils and sweets',
+      c: 'breads and cereals'
+      },
+      correctAnswer: 'c'
+      },
+      {
+      question: "2.  Which of these is NOT considered a nutrient?",
+      answers: {
+      a: 'fat',
+      b: 'calcium',
+      c: 'sodium'
+      },
+      correctAnswer: 'b'
+      },
+      {
+      question: "3.  Which of these is required on the food label? ",
+      answers: {
+      a: ' Total Carbs',
+      b: 'sugars',
+      c: 'iron'
+      },
+      correctAnswer: 'b'
+      },
+      {
+      question: "4.  The bread, cereal, rice and pasta group is a good source of _______?",
+      answers: {
+      a: 'Carbohydrate',
+      b: 'Vitamin C',
+      c: 'Calcium'
+      },
+      correctAnswer: 'a'
+      },
+      {
+      question: "5.  This food group is our body's best source of energy?",
+      answers: {
+      a: ' Meat Group',
+      b: 'fats,oils and sweets',
+      c: 'breads and cereals'
+      },
+      correctAnswer: 'c'
+      },
+      {
+      question: "6.  This food group is our body's best source of energy?",
+      answers: {
+      a: ' Meat Group',
+      b: 'fats,oils and sweets',
+      c: 'breads and cereals'
+      },
+      correctAnswer: 'c'
+      },
+      {
+      question: "7.  Citrus fruits are an excellent source of _______?",
+      answers: {
+      a: ' calcium',
+      b: 'vitamin c',
+      c: 'vitamin a'
+      },
+      correctAnswer: 'b'
+      },
+      {
+      question: "8.  Anemia is a common condition. What happens when a person has anemia?",
+      answers: {
+      a: ' The body produces too much iron',
+      b: 'The blood does not have enough red blood cells',
+      c: 'The blood becomes thick'
+      },
+      correctAnswer: 'b'
+      },
+      {
+      question: "9.  What is the most common cause of anemia?",
+      answers: {
+      a: ' Too little sleep',
+      b: 'Too much sugar',
+      c: 'Too little iron in the blood'
+      },
+      correctAnswer: 'c'
+      },
+      {
+      question: "10.  What percentage of women in India are anaemic?",
+      answers: {
+      a: '50%',
+      b: '40%',
+      c: '30%'
+      },
+      correctAnswer: 'a'
+      },
+      {
+      question: "11.  How does anemia affect the body?",
+      answers: {
+      a: 'The blood doesnt deliver enough oxygen to the body',
+      b: 'Blood becomes thin',
+      c: 'Tissues retain fluids'
+      },
+      correctAnswer: 'a'
+      },
+      {
+      question: "12.  Which of these are signs of anemia?",
+      answers: {
+      a: 'Pale gums',
+      b: 'Dark circles under the eyes',
+      c: 'Bleeding'
+      },
+      correctAnswer: 'a'
+      },
+      {
+      question: "13.  How does iron-deficiency anemia affect teenagers?",
+      answers: {
+      a: 'More trouble with written expression',
+      b: '. Cant concentrate',
+      c: 'Both a and b'
+      },
+      correctAnswer: 'c'
+      },
+      {
+      question:   "14.  Anemia can contribute to which of these among older adults?",
+      answers: {
+      a: 'More falls',
+      b: '. High blood pressure',
+      c: 'Diminished eyesight'
+      },
+      correctAnswer: 'a'
+      },
+      ];
+      var quizContainer = document.getElementById('quiz');
+      var resultsContainer = document.getElementById('results');
+      var submitButton = document.getElementById('submit');
+      generateQuiz(myQuestions, quizContainer, resultsContainer, submitButton);
+      function generateQuiz(questions, quizContainer, resultsContainer, submitButton) {
+      function showQuestions(questions, quizContainer) {
+      // we'll need a place to store the output and the answer choices
+      var output = [];
+      var answers;
+      // for each question...
+      for (var i = 0; i < questions.length; i++) {
+      // first reset the list of answers
+      answers = [];
+      // for each available answer...
+      for (letter in questions[i].answers) {
+      // ...add an html radio button
+      answers.push(
+      '<label>' +
+      '<input type="radio" name="question' + i + '" value="' + letter + '">' +
+      letter + ': ' +
+      questions[i].answers[letter] +
+      '</label>'
+      );
+      }
+      // add this question and its answers to the output
+      output.push(
+      '<div class="question">' + questions[i].question + '</div>' +
+      '<div class="answers">' + answers.join('') + '</div>'
+      );
+      }
+      // finally combine our output list into one string of html and put it on the page
+      quizContainer.innerHTML = output.join('');
+      }
+      function showResults(questions, quizContainer, resultsContainer) {
+      // gather answer containers from our quiz
+      var answerContainers = quizContainer.querySelectorAll('.answers');
+      // keep track of user's answers
+      var userAnswer = '';
+      var numCorrect = 0;
+      // for each question...
+      for (var i = 0; i < questions.length; i++) {
+      // find selected answer
+      userAnswer = (answerContainers[i].querySelector('input[name=question' + i + ']:checked') || {}).value;
+      // if answer is correct
+      if (userAnswer === questions[i].correctAnswer) {
+      // add to the number of correct answers
+      numCorrect++;
+      // color the answers green
+      answerContainers[i].style.color = 'lightgreen';
+      }
+      // if answer is wrong or blank
+      else {
+      // color the answers red
+      answerContainers[i].style.color = 'red';
+      }
+      }
+      // show number of correct answers out of total
+      resultsContainer.innerHTML = numCorrect + ' out of ' + questions.length;
+      }
+      // show questions right away
+      showQuestions(questions, quizContainer);
+      // on submit, show results
+      submitButton.onclick = function() {
+      showResults(questions, quizContainer, resultsContainer);
+      }
+      }
